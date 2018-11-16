@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1447905948861" name="http://www.csre.iitb/siim/BBoxSpatialRelations" uri="SIIM_only_schema_v3.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1447905948861" name="shadowed:http://www.csre.iitb/siim/BBoxSpatialRelations" uri="SpatialRules/direction/north.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1447905948861" name="shadowed:http://www.csre.iitb/siim/BBoxSpatialRelations" uri="SpatialRules/direction/east.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1447905948861" name="shadowed:http://www.csre.iitb/siim/BBoxSpatialRelations" uri="SpatialRules/direction/south_east.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1447905948861" name="shadowed:http://www.csre.iitb/siim/BBoxSpatialRelations" uri="SpatialRules/direction/south_west.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1447905948861" name="shadowed:http://www.csre.iitb/siim/BBoxSpatialRelations" uri="SpatialRules/direction/west.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1447905948861" name="shadowed:http://www.csre.iitb/siim/BBoxSpatialRelations" uri="SpatialRules/direction/north_east.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1447905948861" name="shadowed:http://www.csre.iitb/siim/BBoxSpatialRelations" uri="SpatialRules/direction/north_west.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1447905948861" name="shadowed:http://www.csre.iitb/siim/BBoxSpatialRelations" uri="SpatialRules/direction/south.owl"/>
+    </group>
+</catalog>

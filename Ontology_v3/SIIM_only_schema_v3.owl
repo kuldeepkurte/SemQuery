@@ -1,0 +1,1921 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY schema "http://www.csre.iitb.ac.in/siim/schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY BBoxSpatialRelations "http://www.csre.iitb/siim/BBoxSpatialRelations#" >
+    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
+    <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
+    <!ENTITY BBoxSpatialRelations2 "http://www.csre.iitb.ac.in/siim/BBoxSpatialRelations#" >
+    <!ENTITY BBoxSpatialRelations1 "http://www.csre.iitb.ac.in/siim/BBoxSpatialRelations1#" >
+    <!ENTITY sqwrl "http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.csre.iitb/siim/BBoxSpatialRelations#"
+     xml:base="http://www.csre.iitb/siim/BBoxSpatialRelations"
+     xmlns:BBoxSpatialRelations="http://www.csre.iitb/siim/BBoxSpatialRelations#"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+     xmlns:schema="http://www.csre.iitb.ac.in/siim/schema#"
+     xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:BBoxSpatialRelations1="http://www.csre.iitb.ac.in/siim/BBoxSpatialRelations1#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:BBoxSpatialRelations2="http://www.csre.iitb.ac.in/siim/BBoxSpatialRelations#">
+    <owl:Ontology rdf:about="http://www.csre.iitb.ac.in/siim/schema">
+        <rdfs:comment rdf:datatype="&xsd;string">&quot;This Ontology Specifies Rules for extracting spatial relations between bounding boxes&quot;</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#predictiveModel -->
+
+    <owl:AnnotationProperty rdf:about="&schema;predictiveModel"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#selectedAttributes -->
+
+    <owl:AnnotationProperty rdf:about="&schema;selectedAttributes"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#spatialRule -->
+
+    <owl:AnnotationProperty rdf:about="&schema;spatialRule"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#Connected -->
+
+    <owl:ObjectProperty rdf:about="&schema;Connected">
+        <rdfs:subPropertyOf rdf:resource="&schema;topologicalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#DC -->
+
+    <owl:ObjectProperty rdf:about="&schema;DC">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;topologicalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#EC -->
+
+    <owl:ObjectProperty rdf:about="&schema;EC">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;EC_PO_TPP_NTPP_EQ_TPPi_NTPPi"/>
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:range rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;topologicalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#EC_PO_TPP_NTPP_EQ_TPPi_NTPPi -->
+
+    <owl:ObjectProperty rdf:about="&schema;EC_PO_TPP_NTPP_EQ_TPPi_NTPPi">
+        <rdfs:comment rdf:datatype="&xsd;string">&quot;Bounding Box relation for EC relation between regions&quot;</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&schema;topologicalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#EQ -->
+
+    <owl:ObjectProperty rdf:about="&schema;EQ">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;EC_PO_TPP_NTPP_EQ_TPPi_NTPPi"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;PO_TPP_NTPP_EQ_TPPi_NTPPi"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;TPP_NTPP_EQ"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;TPPi_NTPPi_EQ"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;topologicalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#NTPP -->
+
+    <owl:ObjectProperty rdf:about="&schema;NTPP">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;EC_PO_TPP_NTPP_EQ_TPPi_NTPPi"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;PO_TPP_NTPP_EQ_TPPi_NTPPi"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;TPP_NTPP_EQ"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;topologicalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#NTPPi -->
+
+    <owl:ObjectProperty rdf:about="&schema;NTPPi">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;EC_PO_TPP_NTPP_EQ_TPPi_NTPPi"/>
+        <owl:inverseOf rdf:resource="&schema;NTPP"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;PO_TPP_NTPP_EQ_TPPi_NTPPi"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;TPPi_NTPPi_EQ"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;topologicalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#PO -->
+
+    <owl:ObjectProperty rdf:about="&schema;PO">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;EC_PO_TPP_NTPP_EQ_TPPi_NTPPi"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;PO_TPP_NTPP_EQ_TPPi_NTPPi"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;topologicalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#PO_TPP_NTPP_EQ_TPPi_NTPPi -->
+
+    <owl:ObjectProperty rdf:about="&schema;PO_TPP_NTPP_EQ_TPPi_NTPPi">
+        <rdfs:comment rdf:datatype="&xsd;string">&quot;Bounding Box relation for PO relation between regions&quot;</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&schema;topologicalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#TPP -->
+
+    <owl:ObjectProperty rdf:about="&schema;TPP">
+        <rdfs:subPropertyOf rdf:resource="&schema;EC_PO_TPP_NTPP_EQ_TPPi_NTPPi"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;PO_TPP_NTPP_EQ_TPPi_NTPPi"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;TPP_NTPP_EQ"/>
+        <owl:inverseOf rdf:resource="&schema;TPPi"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;topologicalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#TPP_NTPP_EQ -->
+
+    <owl:ObjectProperty rdf:about="&schema;TPP_NTPP_EQ">
+        <rdfs:comment rdf:datatype="&xsd;string">&quot;Bounding Box relation for TPP relation between regions&quot;</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&schema;topologicalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#TPPi -->
+
+    <owl:ObjectProperty rdf:about="&schema;TPPi">
+        <rdfs:subPropertyOf rdf:resource="&schema;EC_PO_TPP_NTPP_EQ_TPPi_NTPPi"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;PO_TPP_NTPP_EQ_TPPi_NTPPi"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;TPPi_NTPPi_EQ"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;topologicalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#TPPi_NTPPi_EQ -->
+
+    <owl:ObjectProperty rdf:about="&schema;TPPi_NTPPi_EQ">
+        <rdfs:comment rdf:datatype="&xsd;string">&quot;Bounding Box spatial relation for TPPi&quot;</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&schema;topologicalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#aquiredBySensor -->
+
+    <owl:ObjectProperty rdf:about="&schema;aquiredBySensor">
+        <rdfs:domain rdf:resource="&schema;SatelliteImage"/>
+        <rdfs:range rdf:resource="&schema;Sensor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#belongsToImage -->
+
+    <owl:ObjectProperty rdf:about="&schema;belongsToImage">
+        <rdfs:range rdf:resource="&schema;SatelliteImage"/>
+        <rdfs:domain rdf:resource="&schema;Tile"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;belongsToThings"/>
+        <owl:inverseOf rdf:resource="&schema;consistsOfTile"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#belongsToThings -->
+
+    <owl:ObjectProperty rdf:about="&schema;belongsToThings">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#belongsToTile -->
+
+    <owl:ObjectProperty rdf:about="&schema;belongsToTile">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:range rdf:resource="&schema;Tile"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;belongsToThings"/>
+        <owl:inverseOf rdf:resource="&schema;consistsOfRegion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#bounded_east -->
+
+    <owl:ObjectProperty rdf:about="&schema;bounded_east">
+        <rdfs:subPropertyOf rdf:resource="&schema;east"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#bounded_north -->
+
+    <owl:ObjectProperty rdf:about="&schema;bounded_north">
+        <rdfs:subPropertyOf rdf:resource="&schema;north"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#bounded_south -->
+
+    <owl:ObjectProperty rdf:about="&schema;bounded_south">
+        <rdfs:subPropertyOf rdf:resource="&schema;south"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#bounded_west -->
+
+    <owl:ObjectProperty rdf:about="&schema;bounded_west">
+        <rdfs:subPropertyOf rdf:resource="&schema;west"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#consistsOfRegion -->
+
+    <owl:ObjectProperty rdf:about="&schema;consistsOfRegion">
+        <rdfs:range rdf:resource="&schema;Region"/>
+        <rdfs:domain rdf:resource="&schema;Tile"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;consistsOfThings"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#consistsOfThings -->
+
+    <owl:ObjectProperty rdf:about="&schema;consistsOfThings">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#consistsOfTile -->
+
+    <owl:ObjectProperty rdf:about="&schema;consistsOfTile">
+        <rdfs:domain rdf:resource="&schema;SatelliteImage"/>
+        <rdfs:range rdf:resource="&schema;Tile"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;consistsOfThings"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#directionalRelation -->
+
+    <owl:ObjectProperty rdf:about="&schema;directionalRelation">
+        <rdfs:domain rdf:resource="&schema;BoundingBox"/>
+        <rdfs:range rdf:resource="&schema;BoundingBox"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#east -->
+
+    <owl:ObjectProperty rdf:about="&schema;east">
+        <schema:spatialRule rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/Important_Documents/Ontologies/Ontology_v3/SpatialRules/direction/east.owl</schema:spatialRule>
+        <rdfs:subPropertyOf rdf:resource="&schema;directionalRelation"/>
+        <owl:inverseOf rdf:resource="&schema;west"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasBBox -->
+
+    <owl:ObjectProperty rdf:about="&schema;hasBBox">
+        <rdfs:range rdf:resource="&schema;BoundingBox"/>
+        <rdfs:domain rdf:resource="&schema;Region"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasCentroid -->
+
+    <owl:ObjectProperty rdf:about="&schema;hasCentroid">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:range rdf:resource="&schema;RegionCentroid"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasRegionCentroidNearByPlaceGeoName -->
+
+    <owl:ObjectProperty rdf:about="&schema;hasRegionCentroidNearByPlaceGeoName"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasRegionClassType -->
+
+    <owl:ObjectProperty rdf:about="&schema;hasRegionClassType">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasTileCentreGML -->
+
+    <owl:ObjectProperty rdf:about="&schema;hasTileCentreGML"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasTileCentreNearByPlaceGeoName -->
+
+    <owl:ObjectProperty rdf:about="&schema;hasTileCentreNearByPlaceGeoName">
+        <rdfs:domain rdf:resource="&schema;Tile"/>
+        <rdfs:range rdf:resource="http://www.geonames.org/ontology#Feature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasTileCentreW3C -->
+
+    <owl:ObjectProperty rdf:about="&schema;hasTileCentreW3C"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasTileOriginGML -->
+
+    <owl:ObjectProperty rdf:about="&schema;hasTileOriginGML"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasTileOriginW3C -->
+
+    <owl:ObjectProperty rdf:about="&schema;hasTileOriginW3C"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#installedInSatellite -->
+
+    <owl:ObjectProperty rdf:about="&schema;installedInSatellite">
+        <rdfs:range rdf:resource="&schema;Satellite"/>
+        <rdfs:domain rdf:resource="&schema;Sensor"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#just_east -->
+
+    <owl:ObjectProperty rdf:about="&schema;just_east">
+        <rdfs:subPropertyOf rdf:resource="&schema;east"/>
+        <owl:inverseOf rdf:resource="&schema;just_west"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#just_north -->
+
+    <owl:ObjectProperty rdf:about="&schema;just_north">
+        <owl:inverseOf rdf:resource="&schema;just_south"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;north"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#just_south -->
+
+    <owl:ObjectProperty rdf:about="&schema;just_south">
+        <rdfs:subPropertyOf rdf:resource="&schema;south"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#just_west -->
+
+    <owl:ObjectProperty rdf:about="&schema;just_west">
+        <rdfs:subPropertyOf rdf:resource="&schema;west"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#north -->
+
+    <owl:ObjectProperty rdf:about="&schema;north">
+        <schema:spatialRule rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/Important_Documents/Ontologies/Ontology_v3/SpatialRules/direction/north.owl</schema:spatialRule>
+        <rdfs:subPropertyOf rdf:resource="&schema;directionalRelation"/>
+        <owl:inverseOf rdf:resource="&schema;south"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#north_east -->
+
+    <owl:ObjectProperty rdf:about="&schema;north_east">
+        <schema:spatialRule rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/Important_Documents/Ontologies/Ontology_v3/SpatialRules/direction/north_east.owl</schema:spatialRule>
+        <rdfs:subPropertyOf rdf:resource="&schema;directionalRelation"/>
+        <owl:inverseOf rdf:resource="&schema;south_west"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#north_west -->
+
+    <owl:ObjectProperty rdf:about="&schema;north_west">
+        <schema:spatialRule rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/Important_Documents/Ontologies/Ontology_v3/SpatialRules/direction/north_west.owl</schema:spatialRule>
+        <rdfs:subPropertyOf rdf:resource="&schema;directionalRelation"/>
+        <owl:inverseOf rdf:resource="&schema;south_east"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#south -->
+
+    <owl:ObjectProperty rdf:about="&schema;south">
+        <schema:spatialRule rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/Important_Documents/Ontologies/Ontology_v3/SpatialRules/direction/south.owl</schema:spatialRule>
+        <rdfs:subPropertyOf rdf:resource="&schema;directionalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#south_east -->
+
+    <owl:ObjectProperty rdf:about="&schema;south_east">
+        <schema:spatialRule rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/Important_Documents/Ontologies/Ontology_v3/SpatialRules/direction/south_east.owl</schema:spatialRule>
+        <rdfs:subPropertyOf rdf:resource="&schema;directionalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#south_west -->
+
+    <owl:ObjectProperty rdf:about="&schema;south_west">
+        <schema:spatialRule rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/Important_Documents/Ontologies/Ontology_v3/SpatialRules/direction/south_west.owl</schema:spatialRule>
+        <rdfs:subPropertyOf rdf:resource="&schema;directionalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#strong_bounded_east -->
+
+    <owl:ObjectProperty rdf:about="&schema;strong_bounded_east">
+        <rdfs:subPropertyOf rdf:resource="&schema;bounded_east"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;east"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;strong_east"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#strong_bounded_north -->
+
+    <owl:ObjectProperty rdf:about="&schema;strong_bounded_north">
+        <rdfs:subPropertyOf rdf:resource="&schema;bounded_north"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;north"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;strong_north"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#strong_bounded_south -->
+
+    <owl:ObjectProperty rdf:about="&schema;strong_bounded_south">
+        <rdfs:subPropertyOf rdf:resource="&schema;bounded_south"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;south"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;strong_south"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#strong_bounded_west -->
+
+    <owl:ObjectProperty rdf:about="&schema;strong_bounded_west">
+        <rdfs:subPropertyOf rdf:resource="&schema;bounded_west"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;strong_west"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;west"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#strong_east -->
+
+    <owl:ObjectProperty rdf:about="&schema;strong_east">
+        <rdfs:subPropertyOf rdf:resource="&schema;east"/>
+        <owl:inverseOf rdf:resource="&schema;strong_west"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#strong_north -->
+
+    <owl:ObjectProperty rdf:about="&schema;strong_north">
+        <rdfs:subPropertyOf rdf:resource="&schema;north"/>
+        <owl:inverseOf rdf:resource="&schema;strong_south"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#strong_north_east -->
+
+    <owl:ObjectProperty rdf:about="&schema;strong_north_east">
+        <rdfs:subPropertyOf rdf:resource="&schema;north_east"/>
+        <owl:inverseOf rdf:resource="&schema;strong_south_west"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#strong_north_west -->
+
+    <owl:ObjectProperty rdf:about="&schema;strong_north_west">
+        <rdfs:subPropertyOf rdf:resource="&schema;north_west"/>
+        <owl:inverseOf rdf:resource="&schema;strong_south_east"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#strong_south -->
+
+    <owl:ObjectProperty rdf:about="&schema;strong_south">
+        <rdfs:subPropertyOf rdf:resource="&schema;south"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#strong_south_east -->
+
+    <owl:ObjectProperty rdf:about="&schema;strong_south_east">
+        <rdfs:subPropertyOf rdf:resource="&schema;south_east"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#strong_south_west -->
+
+    <owl:ObjectProperty rdf:about="&schema;strong_south_west">
+        <rdfs:subPropertyOf rdf:resource="&schema;south_west"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#strong_west -->
+
+    <owl:ObjectProperty rdf:about="&schema;strong_west">
+        <rdfs:subPropertyOf rdf:resource="&schema;west"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#topologicalRelation -->
+
+    <owl:ObjectProperty rdf:about="&schema;topologicalRelation">
+        <rdfs:comment rdf:datatype="&xsd;string">&quot;Bounding Box relation for DC relation between regions&quot;</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#weak_bounded_east -->
+
+    <owl:ObjectProperty rdf:about="&schema;weak_bounded_east">
+        <rdfs:subPropertyOf rdf:resource="&schema;bounded_east"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;east"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;weak_east"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#weak_bounded_north -->
+
+    <owl:ObjectProperty rdf:about="&schema;weak_bounded_north">
+        <rdfs:subPropertyOf rdf:resource="&schema;bounded_north"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;north"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;weak_north"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#weak_bounded_south -->
+
+    <owl:ObjectProperty rdf:about="&schema;weak_bounded_south">
+        <rdfs:subPropertyOf rdf:resource="&schema;bounded_south"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;south"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;weak_south"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#weak_bounded_west -->
+
+    <owl:ObjectProperty rdf:about="&schema;weak_bounded_west">
+        <rdfs:subPropertyOf rdf:resource="&schema;bounded_west"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;weak_west"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;west"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#weak_east -->
+
+    <owl:ObjectProperty rdf:about="&schema;weak_east">
+        <rdfs:subPropertyOf rdf:resource="&schema;east"/>
+        <owl:inverseOf rdf:resource="&schema;weak_west"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#weak_north -->
+
+    <owl:ObjectProperty rdf:about="&schema;weak_north">
+        <rdfs:subPropertyOf rdf:resource="&schema;north"/>
+        <owl:inverseOf rdf:resource="&schema;weak_south"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#weak_north_east -->
+
+    <owl:ObjectProperty rdf:about="&schema;weak_north_east">
+        <rdfs:subPropertyOf rdf:resource="&schema;north_east"/>
+        <owl:inverseOf rdf:resource="&schema;weak_south_west"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#weak_north_west -->
+
+    <owl:ObjectProperty rdf:about="&schema;weak_north_west">
+        <rdfs:subPropertyOf rdf:resource="&schema;north_west"/>
+        <owl:inverseOf rdf:resource="&schema;weak_south_east"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#weak_south -->
+
+    <owl:ObjectProperty rdf:about="&schema;weak_south">
+        <rdfs:subPropertyOf rdf:resource="&schema;south"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#weak_south_east -->
+
+    <owl:ObjectProperty rdf:about="&schema;weak_south_east">
+        <rdfs:subPropertyOf rdf:resource="&schema;south_east"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#weak_south_west -->
+
+    <owl:ObjectProperty rdf:about="&schema;weak_south_west">
+        <rdfs:subPropertyOf rdf:resource="&schema;south_west"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#weak_west -->
+
+    <owl:ObjectProperty rdf:about="&schema;weak_west">
+        <rdfs:subPropertyOf rdf:resource="&schema;west"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#west -->
+
+    <owl:ObjectProperty rdf:about="&schema;west">
+        <schema:spatialRule rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/Important_Documents/Ontologies/Ontology_v3/SpatialRules/direction/west.owl</schema:spatialRule>
+        <rdfs:subPropertyOf rdf:resource="&schema;directionalRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#LULCClassProbabilityEstimate -->
+
+    <owl:DatatypeProperty rdf:about="&schema;LULCClassProbabilityEstimate">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SD_G -->
+
+    <owl:DatatypeProperty rdf:about="&schema;SD_G">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;colorFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SD_L -->
+
+    <owl:DatatypeProperty rdf:about="&schema;SD_L">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;colorFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SD_NIR -->
+
+    <owl:DatatypeProperty rdf:about="&schema;SD_NIR">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;colorFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SD_R -->
+
+    <owl:DatatypeProperty rdf:about="&schema;SD_R">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;colorFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SD_a -->
+
+    <owl:DatatypeProperty rdf:about="&schema;SD_a">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;colorFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SD_b -->
+
+    <owl:DatatypeProperty rdf:about="&schema;SD_b">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;colorFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SD_glcm_contrast -->
+
+    <owl:DatatypeProperty rdf:about="&schema;SD_glcm_contrast">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;textureFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SD_glcm_correlation -->
+
+    <owl:DatatypeProperty rdf:about="&schema;SD_glcm_correlation">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;textureFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SD_glcm_dissimilarity -->
+
+    <owl:DatatypeProperty rdf:about="&schema;SD_glcm_dissimilarity">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;textureFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SD_glcm_entropy -->
+
+    <owl:DatatypeProperty rdf:about="&schema;SD_glcm_entropy">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;textureFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SD_glcm_homogeneity -->
+
+    <owl:DatatypeProperty rdf:about="&schema;SD_glcm_homogeneity">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;textureFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SD_glcm_mean -->
+
+    <owl:DatatypeProperty rdf:about="&schema;SD_glcm_mean">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;textureFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SD_glcm_second_moment -->
+
+    <owl:DatatypeProperty rdf:about="&schema;SD_glcm_second_moment">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;textureFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SD_glcm_variance -->
+
+    <owl:DatatypeProperty rdf:about="&schema;SD_glcm_variance">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;textureFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SD_mndwi -->
+
+    <owl:DatatypeProperty rdf:about="&schema;SD_mndwi">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;indices"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SD_ndvi -->
+
+    <owl:DatatypeProperty rdf:about="&schema;SD_ndvi">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;indices"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#aquiredOn -->
+
+    <owl:DatatypeProperty rdf:about="&schema;aquiredOn">
+        <rdfs:domain rdf:resource="&schema;SatelliteImage"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#area -->
+
+    <owl:DatatypeProperty rdf:about="&schema;area">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;shapeFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#colorFeatures -->
+
+    <owl:DatatypeProperty rdf:about="&schema;colorFeatures">
+        <rdfs:subPropertyOf rdf:resource="&schema;regionFeatures"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#elongation -->
+
+    <owl:DatatypeProperty rdf:about="&schema;elongation">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;shapeFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#extent -->
+
+    <owl:DatatypeProperty rdf:about="&schema;extent">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;shapeFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasDegreeOfAdjecency -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasDegreeOfAdjecency">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasDimension -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasDimension"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasGeoCRS -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasGeoCRS">
+        <rdfs:domain rdf:resource="&schema;SatelliteImage"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasGeoExtent -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasGeoExtent">
+        <rdfs:comment rdf:datatype="&xsd;string">&quot;Geographical extent of a bounding box is described by left-right Longitude and upper-lower Latitude&quot;</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasGroundSampleDistance -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasGroundSampleDistance">
+        <rdfs:domain rdf:resource="&schema;SatelliteImage"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasHeight -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasHeight">
+        <rdfs:subPropertyOf rdf:resource="&schema;hasDimension"/>
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasImageDataType -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasImageDataType">
+        <rdfs:domain rdf:resource="&schema;SatelliteImage"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasImageFormat -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasImageFormat">
+        <rdfs:domain rdf:resource="&schema;SatelliteImage"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasImageOrigin -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasImageOrigin"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasImageOriginLat -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasImageOriginLat">
+        <rdfs:subPropertyOf rdf:resource="&schema;hasImageOrigin"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasImageOriginLong -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasImageOriginLong">
+        <rdfs:subPropertyOf rdf:resource="&schema;hasImageOrigin"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasImagePixelSize -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasImagePixelSize">
+        <rdfs:domain rdf:resource="&schema;SatelliteImage"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasLeftLong -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasLeftLong">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;hasGeoExtent"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasLowerLat -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasLowerLat">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;hasGeoExtent"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasNumberOfBands -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasNumberOfBands">
+        <rdfs:domain rdf:resource="&schema;SatelliteImage"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;hasDimension"/>
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasNumberOfRegions -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasNumberOfRegions">
+        <rdfs:domain rdf:resource="&schema;Tile"/>
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasNumberOfTiles -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasNumberOfTiles">
+        <rdfs:domain rdf:resource="&schema;SatelliteImage"/>
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasRediometricResolution -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasRediometricResolution">
+        <rdfs:subPropertyOf rdf:resource="&schema;hasResolution"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasResolution -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasResolution"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasRightLong -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasRightLong">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;hasGeoExtent"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasSatelliteName -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasSatelliteName">
+        <rdfs:domain rdf:resource="&schema;Satellite"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasSceneId -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasSceneId">
+        <rdfs:domain rdf:resource="&schema;SatelliteImage"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasScenePath -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasScenePath">
+        <rdfs:domain rdf:resource="&schema;SatelliteImage"/>
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasSceneRow -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasSceneRow">
+        <rdfs:domain rdf:resource="&schema;SatelliteImage"/>
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasSensorName -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasSensorName">
+        <rdfs:domain rdf:resource="&schema;Sensor"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasSpatialResolution -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasSpatialResolution">
+        <rdfs:subPropertyOf rdf:resource="&schema;hasResolution"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasSpectralResolution -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasSpectralResolution">
+        <rdfs:subPropertyOf rdf:resource="&schema;hasResolution"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasTemporalResolution -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasTemporalResolution">
+        <rdfs:subPropertyOf rdf:resource="&schema;hasResolution"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasThumbnailAt -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasThumbnailAt"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasTileCentre -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasTileCentre"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasTileCentreLat -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasTileCentreLat">
+        <rdfs:subPropertyOf rdf:resource="&schema;hasTileCentre"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasTileCentreLong -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasTileCentreLong">
+        <rdfs:subPropertyOf rdf:resource="&schema;hasTileCentre"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasTileOrigin -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasTileOrigin"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasTileOriginLat -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasTileOriginLat">
+        <rdfs:subPropertyOf rdf:resource="&schema;hasTileOrigin"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasTileOriginLong -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasTileOriginLong">
+        <rdfs:subPropertyOf rdf:resource="&schema;hasTileOrigin"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasTilePathInArchive -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasTilePathInArchive">
+        <rdfs:domain rdf:resource="&schema;Tile"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasTileSegMapAt -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasTileSegMapAt"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasUpperLat -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasUpperLat">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;hasGeoExtent"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasWidth -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasWidth">
+        <rdfs:subPropertyOf rdf:resource="&schema;hasDimension"/>
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#hasWithinTileRegionID -->
+
+    <owl:DatatypeProperty rdf:about="&schema;hasWithinTileRegionID">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#indices -->
+
+    <owl:DatatypeProperty rdf:about="&schema;indices">
+        <rdfs:subPropertyOf rdf:resource="&schema;regionFeatures"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#major_axis_length -->
+
+    <owl:DatatypeProperty rdf:about="&schema;major_axis_length">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;shapeFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#mean_G -->
+
+    <owl:DatatypeProperty rdf:about="&schema;mean_G">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;colorFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#mean_L -->
+
+    <owl:DatatypeProperty rdf:about="&schema;mean_L">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;colorFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#mean_NIR -->
+
+    <owl:DatatypeProperty rdf:about="&schema;mean_NIR">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;colorFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#mean_R -->
+
+    <owl:DatatypeProperty rdf:about="&schema;mean_R">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;colorFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#mean_a -->
+
+    <owl:DatatypeProperty rdf:about="&schema;mean_a">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;colorFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#mean_b -->
+
+    <owl:DatatypeProperty rdf:about="&schema;mean_b">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;colorFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#mean_glcm_contrast -->
+
+    <owl:DatatypeProperty rdf:about="&schema;mean_glcm_contrast">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;textureFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#mean_glcm_correlation -->
+
+    <owl:DatatypeProperty rdf:about="&schema;mean_glcm_correlation">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;textureFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#mean_glcm_dissimilarity -->
+
+    <owl:DatatypeProperty rdf:about="&schema;mean_glcm_dissimilarity">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;textureFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#mean_glcm_entropy -->
+
+    <owl:DatatypeProperty rdf:about="&schema;mean_glcm_entropy">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;textureFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#mean_glcm_homogeneity -->
+
+    <owl:DatatypeProperty rdf:about="&schema;mean_glcm_homogeneity">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;textureFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#mean_glcm_mean -->
+
+    <owl:DatatypeProperty rdf:about="&schema;mean_glcm_mean">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;textureFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#mean_glcm_second_moment -->
+
+    <owl:DatatypeProperty rdf:about="&schema;mean_glcm_second_moment">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;textureFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#mean_glcm_variance -->
+
+    <owl:DatatypeProperty rdf:about="&schema;mean_glcm_variance">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;textureFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#mean_mndwi -->
+
+    <owl:DatatypeProperty rdf:about="&schema;mean_mndwi">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;indices"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#mean_ndvi -->
+
+    <owl:DatatypeProperty rdf:about="&schema;mean_ndvi">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;indices"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#minor_axis_length -->
+
+    <owl:DatatypeProperty rdf:about="&schema;minor_axis_length">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;shapeFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#orientation -->
+
+    <owl:DatatypeProperty rdf:about="&schema;orientation">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;shapeFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#perimeter -->
+
+    <owl:DatatypeProperty rdf:about="&schema;perimeter">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;shapeFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#regionFeatures -->
+
+    <owl:DatatypeProperty rdf:about="&schema;regionFeatures"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#shapeFeatures -->
+
+    <owl:DatatypeProperty rdf:about="&schema;shapeFeatures">
+        <rdfs:subPropertyOf rdf:resource="&schema;regionFeatures"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#solidity -->
+
+    <owl:DatatypeProperty rdf:about="&schema;solidity">
+        <rdfs:domain rdf:resource="&schema;Region"/>
+        <rdfs:subPropertyOf rdf:resource="&schema;shapeFeatures"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#textureFeatures -->
+
+    <owl:DatatypeProperty rdf:about="&schema;textureFeatures">
+        <rdfs:subPropertyOf rdf:resource="&schema;regionFeatures"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#Agriculture -->
+
+    <owl:Class rdf:about="&schema;Agriculture">
+        <rdfs:subClassOf rdf:resource="&schema;LULCRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#BoundingBox -->
+
+    <owl:Class rdf:about="&schema;BoundingBox">
+        <rdfs:comment rdf:datatype="&xsd;string">&quot;Concept called &apos;BoundingBox&apos;, this is a bounding box of region&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#BuiltUp -->
+
+    <owl:Class rdf:about="&schema;BuiltUp">
+        <rdfs:subClassOf rdf:resource="&schema;LULCRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#BuiltUpAdjecentToRiver -->
+
+    <owl:Class rdf:about="&schema;BuiltUpAdjecentToRiver">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&schema;BuiltUp"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&schema;EC"/>
+                        <owl:someValuesFrom rdf:resource="&schema;River"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&schema;Region"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#Cloud -->
+
+    <owl:Class rdf:about="&schema;Cloud">
+        <rdfs:subClassOf rdf:resource="&schema;OtherRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#CompletelyFloodedRegion -->
+
+    <owl:Class rdf:about="&schema;CompletelyFloodedRegion">
+        <rdfs:subClassOf rdf:resource="&schema;FloodedRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#Cropland -->
+
+    <owl:Class rdf:about="&schema;Cropland">
+        <rdfs:subClassOf rdf:resource="&schema;Agriculture"/>
+        <schema:predictiveModel rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/project_data/ALI/SelectedData_v2/Modules/PredictiveModels/Cropland/CroplandPredictor.model</schema:predictiveModel>
+        <schema:selectedAttributes rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/project_data/ALI/SelectedData_v2/Modules/PredictiveModels/Cropland/CroplandSelectedAttributes.csv</schema:selectedAttributes>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#FallowCropland -->
+
+    <owl:Class rdf:about="&schema;FallowCropland">
+        <rdfs:subClassOf rdf:resource="&schema;Agriculture"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#FloodAffectedBuilding -->
+
+    <owl:Class rdf:about="&schema;FloodAffectedBuilding">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&schema;BuiltUp"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&schema;EC"/>
+                        <owl:someValuesFrom rdf:resource="&schema;StagnatedFloodWater"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#FloodedAgriculture -->
+
+    <owl:Class rdf:about="&schema;FloodedAgriculture">
+        <rdfs:subClassOf rdf:resource="&schema;PartiallyFloodedRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#FloodedBuiltUp -->
+
+    <owl:Class rdf:about="&schema;FloodedBuiltUp">
+        <rdfs:subClassOf rdf:resource="&schema;PartiallyFloodedRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#FloodedMixedRegion -->
+
+    <owl:Class rdf:about="&schema;FloodedMixedRegion">
+        <rdfs:subClassOf rdf:resource="&schema;PartiallyFloodedRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#FloodedRegion -->
+
+    <owl:Class rdf:about="&schema;FloodedRegion">
+        <rdfs:subClassOf rdf:resource="&schema;Wetland"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#Industrial_Commercial -->
+
+    <owl:Class rdf:about="&schema;Industrial_Commercial">
+        <rdfs:subClassOf rdf:resource="&schema;BuiltUp"/>
+        <schema:predictiveModel rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/project_data/ALI/SelectedData_v2/Modules/PredictiveModels/Industrial_Commercial/IndustrialCommercialPredictor.model</schema:predictiveModel>
+        <schema:selectedAttributes rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/project_data/ALI/SelectedData_v2/Modules/PredictiveModels/Industrial_Commercial/IndustrialCommercialSelectedAttributes.csv</schema:selectedAttributes>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#IsolatedBuiltUp -->
+
+    <owl:Class rdf:about="&schema;IsolatedBuiltUp">
+        <rdfs:subClassOf rdf:resource="&schema;BuiltUp"/>
+        <rdfs:subClassOf rdf:resource="&schema;Region"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#LULCRegion -->
+
+    <owl:Class rdf:about="&schema;LULCRegion">
+        <rdfs:subClassOf rdf:resource="&schema;Region"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#Lakes -->
+
+    <owl:Class rdf:about="&schema;Lakes">
+        <rdfs:subClassOf rdf:resource="&schema;Water"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#NewWaterAreas -->
+
+    <owl:Class rdf:about="&schema;NewWaterAreas">
+        <rdfs:subClassOf rdf:resource="&schema;LULCRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#NonSedimentFloodRegion -->
+
+    <owl:Class rdf:about="&schema;NonSedimentFloodRegion">
+        <rdfs:subClassOf rdf:resource="&schema;CompletelyFloodedRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#OtherRegion -->
+
+    <owl:Class rdf:about="&schema;OtherRegion">
+        <rdfs:subClassOf rdf:resource="&schema;Region"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#PartiallyFloodedCropland -->
+
+    <owl:Class rdf:about="&schema;PartiallyFloodedCropland">
+        <rdfs:subClassOf rdf:resource="&schema;NewWaterAreas"/>
+        <schema:predictiveModel rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/project_data/ALI/SelectedData_v2/Modules/PredictiveModels/PartiallyFloodedCropland/PartiallyFloodedCroplandPredictor.model</schema:predictiveModel>
+        <schema:selectedAttributes rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/project_data/ALI/SelectedData_v2/Modules/PredictiveModels/PartiallyFloodedCropland/PartiallyFloodedCroplandSelectedAttributes.csv</schema:selectedAttributes>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#PartiallyFloodedRegion -->
+
+    <owl:Class rdf:about="&schema;PartiallyFloodedRegion">
+        <rdfs:subClassOf rdf:resource="&schema;FloodedRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#PredictiveModel -->
+
+    <owl:Class rdf:about="&schema;PredictiveModel"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#Region -->
+
+    <owl:Class rdf:about="&schema;Region"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#RegionCentroid -->
+
+    <owl:Class rdf:about="&schema;RegionCentroid"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#Residential -->
+
+    <owl:Class rdf:about="&schema;Residential">
+        <rdfs:subClassOf rdf:resource="&schema;BuiltUp"/>
+        <schema:predictiveModel rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/project_data/ALI/SelectedData_v2/Modules/PredictiveModels/Residential/ResidentialPredictor.model</schema:predictiveModel>
+        <schema:selectedAttributes rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/project_data/ALI/SelectedData_v2/Modules/PredictiveModels/Residential/ResidentialSelectedAttributes.csv</schema:selectedAttributes>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#River -->
+
+    <owl:Class rdf:about="&schema;River">
+        <rdfs:subClassOf rdf:resource="&schema;Streams"/>
+        <schema:predictiveModel rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/project_data/ALI/SelectedData_v2/Modules/PredictiveModels/River/RiverPredictor.model</schema:predictiveModel>
+        <schema:selectedAttributes rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/project_data/ALI/SelectedData_v2/Modules/PredictiveModels/River/RiverSelectedAttributes.csv</schema:selectedAttributes>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#Satellite -->
+
+    <owl:Class rdf:about="&schema;Satellite"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SatelliteImage -->
+
+    <owl:Class rdf:about="&schema;SatelliteImage"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#SedimentedCloggedFloodRegion -->
+
+    <owl:Class rdf:about="&schema;SedimentedCloggedFloodRegion">
+        <rdfs:subClassOf rdf:resource="&schema;CompletelyFloodedRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#Sensor -->
+
+    <owl:Class rdf:about="&schema;Sensor"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#StagnatedFloodWater -->
+
+    <owl:Class rdf:about="&schema;StagnatedFloodWater">
+        <rdfs:subClassOf rdf:resource="&schema;NewWaterAreas"/>
+        <schema:predictiveModel rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/project_data/ALI/SelectedData_v2/Modules/PredictiveModels/StagnatedFloodWater/StagnatedFloodWaterPredictor.model</schema:predictiveModel>
+        <schema:selectedAttributes rdf:datatype="&xsd;string">/home/geosyslab/KULDEEP/project_data/ALI/SelectedData_v2/Modules/PredictiveModels/StagnatedFloodWater/StagnatedFloodWaterSelectedAttributes.csv</schema:selectedAttributes>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#Streams -->
+
+    <owl:Class rdf:about="&schema;Streams">
+        <rdfs:subClassOf rdf:resource="&schema;Water"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#Tile -->
+
+    <owl:Class rdf:about="&schema;Tile"/>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#Water -->
+
+    <owl:Class rdf:about="&schema;Water">
+        <rdfs:subClassOf rdf:resource="&schema;LULCRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/schema#Wetland -->
+
+    <owl:Class rdf:about="&schema;Wetland">
+        <rdfs:subClassOf rdf:resource="&schema;LULCRegion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.geonames.org/ontology#Feature -->
+
+    <owl:Class rdf:about="http://www.geonames.org/ontology#Feature"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/data#ALI -->
+
+    <owl:NamedIndividual rdf:about="http://www.csre.iitb.ac.in/siim/data#ALI">
+        <rdf:type rdf:resource="&schema;Sensor"/>
+        <schema:hasSensorName rdf:datatype="&xsd;string">ALI</schema:hasSensorName>
+        <schema:installedInSatellite rdf:resource="http://www.csre.iitb.ac.in/siim/data#EO-1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.csre.iitb.ac.in/siim/data#EO-1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.csre.iitb.ac.in/siim/data#EO-1">
+        <rdf:type rdf:resource="&schema;Satellite"/>
+        <schema:hasSatelliteName rdf:datatype="&xsd;string">EO-1</schema:hasSatelliteName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.csre.iitb.ac.in/siim/data#ALI"/>
+            <rdf:Description rdf:about="http://www.csre.iitb.ac.in/siim/data#EO-1"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+

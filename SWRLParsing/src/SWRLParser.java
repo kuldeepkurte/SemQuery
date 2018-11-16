@@ -109,7 +109,7 @@ public class SWRLParser {
         	filterFlag=false;
         	System.out.println(formattedBodyAtom);
         	System.out.println(formattedBodyAtomFilter+"\n");
-        	
+        	System.out.println("Done");
             
         } 
         
