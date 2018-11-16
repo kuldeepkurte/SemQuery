@@ -16,7 +16,7 @@ import org.semanticweb.owlapi.model.SWRLRule;
 
 public class SWRLParser {
 	
-	private static final String DOC_URL = "/Users/kk0/kuldeep/ORNL/Projects/SemQuery/Ontology_v3/SpatialRules/direction/north.owl";
+	private static final String DOC_URL = "/Users/kk0/kuldeep/ORNL/Projects/SemQuery/Ontology_v3/SpatialRules/direction/north_east.owl";
 	 //private static final String DOC_URL = "http://acrab.ics.muni.cz/ontologies/swrl_tutorial_ind.owl"; 
 	static boolean filterFlag=false;
 	//---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -110,6 +110,7 @@ public class SWRLParser {
         	System.out.println(formattedBodyAtom);
         	System.out.println(formattedBodyAtomFilter+"\n");
         	System.out.println("Done");
+        	
             
         } 
         
